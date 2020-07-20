@@ -8,13 +8,17 @@ const { checkJwt } = require('../controllers/auth');
 const {
     getPortfolios, 
     getPortfolioById,
-    createPortfolio
+    createPortfolio,
+    updatePortfolio
 } = require('../controllers/portfolios');
 
 router.get('',getPortfolios);
 router.get('/:id', getPortfolioById);
 
 router.post('', checkJwt, createPortfolio);
+
+// todo create middleware tocheck for admin rights
+router.patch('/:id', checkJwt, updatePortfolio);
 
 module.exports = router;
 
