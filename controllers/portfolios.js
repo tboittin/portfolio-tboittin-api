@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
-const Portfolio = require('../db/models/portfolio');
+// const Portfolio = require('../db/models/portfolio');
+const Portfolio = mongoose.model('Portfolio');
 
 exports.getPortfolios = async (req, res) => {
     const portfolios = await Portfolio.find({});
@@ -14,11 +15,19 @@ exports.getPortfolioById = async (req, res) => {
     } catch (error) {
         return res.status(422).send(error.message)
     }
-    
 }
 
 exports.createPortfolio = async (req, res) => {
-    const data = req.body;
-    console.log(data);
-    return res.json({message: 'Creating Portfolio...'})
+    const portfolioData = req.body;
+    // To-do extract from req!
+    const userId = 'google-oauth2|117107889601097746029';
+    const portfolio = new Portfolio(portfolioData);
+    portfolio.userId = userId;
+
+    try {
+        const newPortfolio = await portfolio.save();
+        return res.json(newPortfolio);
+    } catch(error) {
+        return res.status(422).send(error.message)
+    }
 }

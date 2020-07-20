@@ -9,7 +9,8 @@ const data = {
           jobTitle: 'Engineer',
           description: 'Doing something, programing....',
           startDate: '01/01/2014',
-          endDate: '01/01/2016'
+          endDate: '01/01/2016',
+          userId: 'google-oauth2|117107889601097746029'
         },
         {
           title: 'Job in Siemens',
@@ -19,7 +20,8 @@ const data = {
           jobTitle: 'Software Engineer',
           description: 'Responsoble for parsing framework for JSON medical data.',
           startDate: '01/01/2011',
-          endDate: '01/01/2013'
+          endDate: '01/01/2013',
+          userId: 'google-oauth2|117107889601097746029'
         },
         {
           title: 'Work in USA',
@@ -29,7 +31,8 @@ const data = {
           jobTitle: 'Housekeeping',
           description: 'So much responsibility....Overloaaaaaad',
           startDate: '01/01/2010',
-          endDate: '01/01/2011'
+          endDate: '01/01/2011',
+          userId: 'google-oauth2|117107889601097746029'
         }
     ]
 }

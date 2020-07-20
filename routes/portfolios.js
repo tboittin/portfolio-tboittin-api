@@ -1,10 +1,12 @@
+
+
 const express = require('express');
 const router = express.Router();
 const {
     getPortfolios, 
     getPortfolioById,
     createPortfolio
-} = require('../controllers/portfolios')
+} = require('../controllers/portfolios');
 
 
 router.get('', getPortfolios);
