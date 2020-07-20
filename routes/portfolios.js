@@ -18,7 +18,7 @@ router.get('/:id', getPortfolioById);
 router.post('', checkJwt, createPortfolio);
 
 // todo create middleware tocheck for admin rights
-router.patch('/:id', checkJwt, updatePortfolio);
+router.patch('/:id', updatePortfolio);
 
 module.exports = router;
 
