@@ -50,7 +50,7 @@ exports.updateBlog = async (req, res) => {
         }
 
         if (body.status && body.status === "published" && !blog.slug) {
-            blog.slug = slugify('some string', {lower: true})
+            blog.slug = slugify(blog.title, {lower: true})
         }
 
         blog.set(body);
