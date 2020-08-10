@@ -13,6 +13,12 @@ exports.getBlogs = async (req, res) => {
     return res.json(blogs)
 }
 
+exports.getBlogsByUser = async (req, res) => {
+    const userId = req.user.sub;
+    const blogs = await Blog.find({userId});
+    return res.json(blogs)
+}
+
 exports.getBlogById = async (req, res) => {
     const blogs = await Blog.findById(req.params.id);
     return res.json(blogs)
@@ -51,8 +57,8 @@ exports.updateBlog = async (req, res) => {
         blog.updateAt = new Date();
 
         try {
-            const updateBlog = await blog.save();
-            return res.json(updateBlog);
+            const updatedBlog = await blog.save();
+            return res.json(updatedBlog);
         } catch(err) {
             return res.status(422).send(err.message);
         }
