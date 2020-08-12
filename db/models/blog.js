@@ -8,7 +8,7 @@ const blogSchema = new Schema({
     subtitle: {type: String},
     content: {type: String, required: true},
     userId: {type: String, required:true},
-    status: {type: String, default:'draft', enum:['draft','published']},
+    status: {type: String, default:'draft', enum:['draft','published', 'deleted']},
     createdAt: {type: Date, default: Date.now},
     updatedAt: {type: Date, default: Date.now},
     slug: {type: String, unique: true, sparse: true},
