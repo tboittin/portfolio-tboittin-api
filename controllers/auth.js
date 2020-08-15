@@ -3,7 +3,8 @@
 
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
-const config = require('../config/dev')
+const config = require('../config/dev');
+const request = require('express');
 
 // Authentication middleware
 // This middleware will check access token in authorization headers
@@ -32,6 +33,22 @@ exports.checkRole = role => (req, res, next) => {
     
 }
 
-// const midd = (req, res) => {
+exports.getAccessToken = (callback) => {
+    const options = {
+        methods: 'POST',
+        url: config.AUTH0_TOKEN_URL,
+        headers: {'content-type': 'application/json'},
+        form: {
+            grant_type: 'client_credentials',
+            client_id: config.AUTH0_CLIENT_ID,
+            client_secret: config.AUTH0_CLIENT_SECRET,
+            audience: config.AUTH0_AUDIENCE
+        }
+    }
 
-// }
+    request(options, (error, res, body) => {
+        if (error) {callback(error)}
+
+        return callback(null, JSON.parse(body));
+    })
+}

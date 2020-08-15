@@ -5,6 +5,7 @@ var slugify = require('slugify')
 const mongoose = require('mongoose');
 const Blog = mongoose.model('Blog');
 const uniqueSlug = require('unique-slug')
+const {getAccessToken} = require('./auth')
 
 exports.getBlogs = async (req, res) => {
     // Setting sort({createdAt: -1}) => Last published appear first
@@ -29,6 +30,9 @@ exports.getBlogById = async (req, res) => {
 
 exports.getBlogBySlug = async (req, res) => {
     const blogs = await Blog.findOne({slug: req.params.slug});
+    getAccessToken((error, data)=>{
+        return res.json(blog);
+    });
     return res.json(blogs)
 }
 
