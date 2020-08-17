@@ -4,7 +4,7 @@
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 const config = require('../config/dev');
-const request = require('express');
+const request = require('request');
 
 // Authentication middleware
 // This middleware will check access token in authorization headers
@@ -62,8 +62,8 @@ exports.getAuth0User = accessToken => userId => {
     const options = {
         method: 'GET',
         url: config.AUTH0_DOMAIN+'/api/v2/users/'+userId+'?fields=name,picture,user_id',
-        headers: {authorization: 'Bearer '+accessToken }
-    }
+        headers: {authorization: 'Bearer '+accessToken}
+    };
 
     return new Promise((resolve, reject) => {
         request(options, (error, res, body) => {
