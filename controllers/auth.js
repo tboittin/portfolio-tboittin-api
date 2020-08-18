@@ -3,7 +3,7 @@
 
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
-const config = require('../config/dev');
+const config = require('../config');
 const request = require('request');
 
 // Authentication middleware
