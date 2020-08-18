@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const blogSchema = new Schema({
     title: {type: String, required: true, maxlength: 96},
-    subtitle: {type: String},
+    subTitle: {type: String},
     content: {type: String, required: true},
     userId: {type: String, required:true},
     status: {type: String, default:'draft', enum:['draft','published', 'deleted']},
