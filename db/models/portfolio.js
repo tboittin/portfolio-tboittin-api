@@ -5,13 +5,9 @@ const Schema = mongoose.Schema;
 
 const portfolioSchema = new Schema({
     title: {type: String, required: true, maxlength: 128},
-    company: {type: String, required: true, maxlength: 64},
-    companyWebsite: {type: String, required: true, maxlength: 128},
-    location: {type: String, required: true},
-    jobTitle: {type: String, required: true},
+    projectLink: {type: String, required: true, maxlength: 128},
+    image: {type: String, maxlength: 64},
     description: {type: String, required: true},
-    startDate: {type: Date, required: true},
-    endDate: {type: Date},
     userId: {type: String, required:true},
     createdAt: {type: Date, default: Date.now},
 });
